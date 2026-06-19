@@ -1,0 +1,13 @@
+FROM opensuse/leap:15.6
+
+RUN zypper refresh && \
+    zypper install -y python3 && \
+    zypper clean --all
+
+WORKDIR /app
+
+COPY server.py .
+
+EXPOSE 5000
+
+CMD ["python3", "server.py"]
